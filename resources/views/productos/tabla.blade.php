@@ -24,6 +24,22 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($listado as $row)
+                    <tr>
+                        <td></td>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->nombre }}</td>
+                        <td>{{ $row->precio }}</td>
+                        <td>{{ $row->categoria_id }}</td>
+                        <td>
+                            @if($row->status)
+                                <span class="badge bg-success">Activo</span>
+                            @else
+                                <span class="badge bg-danger">Inactivo</span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-sm-3"> {{--Panel izquierdo--}}
-            <p>izquierdo</p>
+            @include('productos.nuevo')
         </div>
         <div class="col-sm-9"> {{--Panel derecho--}}
             @include('productos.tabla')
