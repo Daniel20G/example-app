@@ -30,7 +30,7 @@
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->nombre }}</td>
                         <td>{{ $row->precio }}</td>
-                        <td>{{ $row->categoria_id }}</td>
+                        <td>{{ $row->Categoria->nombre }}</td>
                         <td>
                             @if($row->status)
                                 <span class="badge bg-success">Activo</span>
@@ -42,6 +42,10 @@
                 @endforeach
                 </tbody>
             </table>
+
+            @if(!empty($listado))
+                {{ $listado->links() }}
+            @endif
         </div>
     </div>
 
