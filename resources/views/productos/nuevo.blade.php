@@ -3,18 +3,20 @@
         <h4 class="mb-0">Nuevo producto</h4>
     </div>
     <div class="card-body bg-light">
-        <form>
+        <form wire:submit.prevent = "submit">
             <div class="mb-3">
                 <label for="nombre">Nombre</label>
-                <input class="form-control" type="text" placeholder="Nombre">
+                <input class="form-control" type="text" placeholder="Nombre" wire:model="nombre" />
+                @error('nombre') <br /> <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="mb-3">
                 <label for="precio">Precio</label>
-                <input class="form-control" type="text" placeholder="Precio">
+                <input class="form-control" type="number" placeholder="Precio" wire:model="precio" />
+                @error('precio') <br /> <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="mb-3">
                 <label for="nombre">Categoria</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" wire:model="categoria_id" />
                     @foreach($listado_categorias as $row)
                         <option value="{{$row->id}}">{{$row->nombre}}</option>
                     @endforeach
@@ -22,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label for="Status">Status</label>
-                <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault" wire:model="status" />
             </div>
             <div>
                 <div>
@@ -30,5 +32,17 @@
                 </div>
             </div>
         </form>
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
     </div>
 </div>
