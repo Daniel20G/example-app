@@ -13,4 +13,14 @@ class Producto extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function scopefiltro($query,$termino){
+        if($termino===''){
+            return;
+        }
+
+        return $query->where('nombre', 'ilike', "%{$termino}%")
+            ->orwhere('precio', 'like', "%{$termino}%");
+
+    }
 }

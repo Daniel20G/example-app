@@ -5,7 +5,7 @@
                 <h5 class="mb-0">Lista de Productos</h5>
             </div>
             <div class="pull-right col-sm-3">
-                <input class="form-control" type="text" placeholder="Busqueda">
+                <input class="form-control" type="text" placeholder="Busqueda" wire:model="search">
             </div>
         </div>
     </div> <!-- fin encabezado -->
@@ -43,9 +43,14 @@
                 </tbody>
             </table>
 
-            @if(!empty($listado))
+            @if($listado->count())
                 {{ $listado->links() }}
+            @else
+                <div class="alert alert-warning" role="alert">
+                    No hay ningun registro
+                </div>
             @endif
+
         </div>
     </div>
 
